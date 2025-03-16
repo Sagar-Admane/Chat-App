@@ -26,10 +26,11 @@ function App() {
   const [open1, setOpen1] = useState(false);
   const [selectedChat, setSelectedchat] = useState();
   const [groupModal, setGroupModal] = useState(false);
-  const [chats, setChats] = useState([]);
+  const [chats, setChats] = useState([]);;
+  const [notification, setNotification] = useState([]); 
   
   return (
-    <chatContext.Provider value={{user, setUser, open1, setOpen1, selectedChat, setSelectedchat, chats, setChats, groupModal, setGroupModal}} >
+    <chatContext.Provider value={{user, setUser, open1, setOpen1, selectedChat, setSelectedchat, chats, setChats, groupModal, setGroupModal, notification, setNotification}} >
     <div>
       <RouterProvider router={router} />
     </div>

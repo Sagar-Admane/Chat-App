@@ -111,7 +111,8 @@ function SideDrawer() {
 
 
       <div className={style.profile} >
-        <FaBell size={20} />
+        
+        
         <Button color='black'
           id="basic-button"
           aria-controls={open ? 'basic-menu' : undefined}
@@ -136,8 +137,8 @@ function SideDrawer() {
               }
             }
           }}
-        >
-          
+        > 
+
           <ProfileModal />
           <MenuItem onClick={handleOpen} >Profile</MenuItem>
 

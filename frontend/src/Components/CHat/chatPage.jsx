@@ -11,6 +11,7 @@ function ChatPage() {
 
   const val = useContext(chatContext);
   const navigate = useNavigate();
+  const [fetchAgain, setFetchAgain] = useState(false);
 
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
@@ -24,8 +25,8 @@ function ChatPage() {
     <div className={style.container} >
       {val.user && <SideDrawer   /> }
       <div className={style.chatSection} >
-        {val.user && <MyChats />}
-        {val.user && <ChatBox />}
+        {val.user && <MyChats fetchAgain={fetchAgain} />}
+        {val.user && <ChatBox fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />}
       </div>
     </div>
   )

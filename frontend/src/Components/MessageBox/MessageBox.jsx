@@ -12,7 +12,7 @@ import Loading from '../Miscellaneous/Loading';
 import { MdOutlineCancel } from 'react-icons/md';
 import Message from '../Messages/Message';
 
-function MessageBox() {
+function MessageBox({ fetchAgain, setFetchAgain }) {
 
   const CustomChip = styled(Chip)({
     display: "flex",
@@ -190,7 +190,7 @@ const handledelete = (id) => {
       </div>
       <div className={style.box} >
         <div className={style.msg} >
-          <Message />
+          <Message fetchAgain={fetchAgain} setFetchAgain={setFetchAgain} />
         </div>
 
       </div>

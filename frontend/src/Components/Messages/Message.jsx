@@ -13,7 +13,7 @@ import anumation from "../../typing/type.json"
 const ENDPOINT = "http://localhost:5000";
 var socket, selectedChatCompare;
 
-function Message() {
+function Message({ fetchAgain, setFetchAgain }) {
 
     const [message, setMessage] = useState([]);
     const [newMessage, setNewMessage] = useState("");
@@ -22,7 +22,7 @@ function Message() {
     const [typing, setTyping] = useState(false);
     const [isTyping, setIsTyping] = useState(false);
 
-    const {user, selectedChat, setSelectedchat} = useContext(chatContext)
+    const {user, selectedChat, setSelectedchat, notification, setNotification} = useContext(chatContext)
 
     const defaultOption = {
         loop : true,
@@ -38,6 +38,11 @@ function Message() {
         selectedChatCompare = selectedChat;
     }, [selectedChat])
 
+    useEffect(() => {
+        console.log(notification, "Updated Notification");
+    }, [notification]);
+
+    
     useEffect(()=>{
         socket = io(ENDPOINT);
         socket.emit("setup",user);
@@ -45,17 +50,23 @@ function Message() {
         socket.on('typing',()=>setIsTyping(true));
         socket.on('stop typing',()=>setIsTyping(false));
     }, [])
-
+    
     useEffect(()=>{
         socket.on("message recieved",(newMessageRecieved)=>{
             if(!selectedChatCompare || selectedChatCompare._id!=newMessageRecieved.chat._id){
                 // givenotification
+                if(!notification.includes(newMessageRecieved)){
+                    setNotification([newMessageRecieved, ...notification]);
+                    setFetchAgain(!fetchAgain);
+                }
+                
             } else {
                 setMessage([...message,newMessageRecieved]);
             }
         })
     })
-
+    
+    
     async function fetchMessage(){
         if(!selectedChat) return;
 
@@ -68,7 +79,6 @@ function Message() {
                 }
             })
             setMessage(data);
-            console.log(data);
             socket.emit('join chat', selectedChat._id);
         } catch (error) {
             toast.error("Failed to load the messages");

@@ -9,7 +9,7 @@ import Loading from '../Miscellaneous/Loading';
 import { getSender } from '../../config/chatLogics';
 import CreaeteGroup from '../Modals/CreaeteGroup';
 
-function MyChats() {
+function MyChats({ fetchAgain }) {
   const [loggedUser, setLoggedUser] = useState()
   const val = useContext(chatContext);
 

@@ -19,6 +19,9 @@ app.get("/", (req, res)=>{
 app.use("/api/user", userRoutes);
 app.use("/api/chat", chatRoutes);
 app.use("/api/message", messageRoute);
+
+
+
 const PORT = process.env.PORT || 5000;
 
 const server = app.listen(PORT,()=>{
