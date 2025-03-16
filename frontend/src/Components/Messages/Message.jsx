@@ -9,8 +9,9 @@ import ScrollableChats from '../ScrollableChats/ScrollableChats';
 import io from "socket.io-client"
 import Lottie, {} from "react-lottie"
 import anumation from "../../typing/type.json"
+import env from "dotenv"
 
-const ENDPOINT = "http://localhost:5000";
+const ENDPOINT = process.env.VITE_BACKEND_URL;
 var socket, selectedChatCompare;
 
 function Message({ fetchAgain, setFetchAgain }) {
