@@ -11,7 +11,7 @@ import Lottie, {} from "react-lottie"
 import anumation from "../../typing/type.json"
 import env from "dotenv"
 
-const ENDPOINT = process.env.VITE_BACKEND_URL;
+const ENDPOINT = "https://chat-backend-zyqz.onrender.com";
 var socket, selectedChatCompare;
 
 function Message({ fetchAgain, setFetchAgain }) {
