@@ -26,7 +26,7 @@ function Login() {
       
     }
     try {
-      const {data} = await axios.post("http://localhost:5000/api/user/login",{email, password},{headers:{"Content-Type" : "application/json"}});
+      const {data} = await axios.post("https://chat-backend-zyqz.onrender.com/api/user/login",{email, password},{headers:{"Content-Type" : "application/json"}});
       toast.success("Logged In Successfully");
       localStorage.setItem("userInfo", JSON.stringify(data));
       navigate("/chat");

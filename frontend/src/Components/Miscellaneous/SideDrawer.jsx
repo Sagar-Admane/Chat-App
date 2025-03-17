@@ -54,7 +54,7 @@ function SideDrawer() {
     try {
       setLoading(true);
       console.log(val.user.token);
-      const {data} = await axios.get(`http://localhost:5000/api/user?search=${search}`,{
+      const {data} = await axios.get(`https://chat-backend-zyqz.onrender.com/api/user?search=${search}`,{
         headers : {
           "Content-Type" : "application/json",
           Authorization : `Bearer ${val.user.token}`,
@@ -73,7 +73,7 @@ function SideDrawer() {
     console.log(userId)
     try {
       setLoadingChat(true);
-      const {data} = await axios.post("http://localhost:5000/api/chat", {userId}, {
+      const {data} = await axios.post("https://chat-backend-zyqz.onrender.com/api/chat", {userId}, {
         headers : {
           "Content-Type" : "application/json",
           Authorization : `Bearer ${val.user.token}`

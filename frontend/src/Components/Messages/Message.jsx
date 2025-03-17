@@ -74,7 +74,7 @@ function Message({ fetchAgain, setFetchAgain }) {
         
 
         try {
-            const {data} = await axios.get(`http://localhost:5000/api/message/${selectedChat._id}`,{
+            const {data} = await axios.get(`https://chat-backend-zyqz.onrender.com/api/message/${selectedChat._id}`,{
                 headers : {
                     Authorization : `Bearer ${user.token}`
                 }
@@ -96,7 +96,7 @@ function Message({ fetchAgain, setFetchAgain }) {
         setNewMessage("");
         socket.emit('stop typing', selectedChat._id);
         try {
-            const { data } = await axios.post("http://localhost:5000/api/message", {
+            const { data } = await axios.post("https://chat-backend-zyqz.onrender.com/api/message", {
                 content: newMessage,
                 chatId: selectedChat._id
             }, {

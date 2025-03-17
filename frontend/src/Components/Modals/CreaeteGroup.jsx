@@ -56,7 +56,7 @@ function CreaeteGroup({ children }) {
         setLoading(true)
 
         try {
-            const { data } = await axios.get(`http://localhost:5000/api/user?search=${search}`, {
+            const { data } = await axios.get(`https://chat-backend-zyqz.onrender.com/api/user?search=${search}`, {
                 headers: {
                     Authorization: `Bearer ${user.token}`,
                 }
@@ -86,7 +86,7 @@ function CreaeteGroup({ children }) {
 
         try {
 
-            const { data } = await axios.post(`http://localhost:5000/api/chat/group`, {name : groupChatName, users: JSON.stringify(selectedUser)},{
+            const { data } = await axios.post(`https://chat-backend-zyqz.onrender.com/api/chat/group`, {name : groupChatName, users: JSON.stringify(selectedUser)},{
                 headers: {
                     Authorization: `Bearer ${user.token}`,
                 }
