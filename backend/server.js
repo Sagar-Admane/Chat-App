@@ -28,11 +28,19 @@ const server = app.listen(PORT,()=>{
     console.log("Port started");
 })
 
+const allowedOrigins = [
+    "https://chat-app-git-main-sagar-admanes-projects.vercel.app", 
+    "https://chat-app-omega-sandy.vercel.app" 
+  ];
+
 const io = new Server(server,{
     pingTimeout : 60000,
     cors :{
-        origin : "https://chat-app-omega-sandy.vercel.app/",
-    }
+        origin : allowedOrigins,
+        methods : ["GET","POST"],
+        credentials : true
+    },
+    transports : ["websocket", "polling"]
 })
 
 io.on("connection", (socket)=>{
